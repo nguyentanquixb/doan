@@ -1,0 +1,28 @@
+
+<app-header></app-header>
+<div class="container">
+    <div class="setwi" *ngIf="hotels">
+        <p-orderList   [value]="hotels" [listStyle]="{'max-height':'40rem'}" header="Danh sách khách sạn " filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+            <ng-template let-product pTemplate="item">
+                <div class="product-item">
+                    <div class="image-container">
+                            <img src="{{product.img}}" [alt]="product.name" class="product-image" />
+                    </div>
+                    <div class="product-list-detail" >
+                        <h5 class="mb-2"  style="font-size: 16px;" >{{product.name}}</h5>
+                    
+                    </div>
+                    <div class="product-list-action" *ngIf="product.published == 1" >
+                        <button pButton pRipple type="button"  style="font-size: 15px;" label="Không ban hành" (click)="status(false,product.id)" class="p-button-raised"></button>
+                    </div>
+                    <div class="product-list-action"*ngIf="product.published == 0"  >
+                        <button pButton pRipple type="button" style="font-size: 15px;" label="Ban hành "(click)="status(true,product.id)"  class="p-button-raised"></button>
+                    </div>
+                </div>
+            </ng-template>
+        </p-orderList>
+    </div>
+</div>
+
+ 
+

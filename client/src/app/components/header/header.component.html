@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-default">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li  ><a [routerLink]="['/hotel']" routerLinkActive="router-link-active" >Khách sạn</a></li>
+            <li ><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Trang chủ</a></li>
+            <li ><a href="#">Blog</a></li>
+          
+        </ul>
+        <ul class="nav navbar-nav" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a (click)='showRegister()'>Đăng kí</a>
+          </li>
+          <li class="nav-item">
+            <a (click)='showLogin()'>Đăng nhập</a>
+          </li>
+      </ul>
+      <ul class="nav navbar-nav" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile">{{ username }}</a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a [routerLink]="['/admin']" routerLinkActive="router-link-active"  class="nav-link" >Admin</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">Đăng xuất</a>
+        </li>
+    </ul>
+       
+    </div>
+</nav>
+

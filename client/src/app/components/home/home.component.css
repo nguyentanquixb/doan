@@ -1,0 +1,7 @@
+.hotel-item{
+    float: left;
+    margin-right: 20px;
+}
+.hotel-item.center.header.limit-length{
+    font-size: 24px;
+}

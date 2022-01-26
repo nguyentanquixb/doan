@@ -1,0 +1,118 @@
+<app-header></app-header>
+<h2>Nét đặc trưng Quy Nhơn</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12  col-md-3">
+            <h4>Vui chơi</h4>
+            <p>Địa điểm tham quan, hoạt động khám phá và những trải nghiệm tiêu biểu.</p>
+        </div>
+        <div class="col-xs-12  col-md-9">
+            <div class="hotel-item" *ngFor="let touristDestination of touristDestination">
+                <div class="left">
+                    <div class="img-wrapper">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4e/50/01/k-co-m-t-ngay-bi-n-d.jpg?w=400&h=-1&s=1"
+                            style="max-width: 260px; border-radius: 2%;">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="header"  style="border-radius: 2%;border: rgb(41, 194, 199);">
+                        <a [routerLink]="['/TouristDestinationDetail',touristDestination.id]" routerLinkActive="router-link-active"  class="name limit-length" style="font-size: 20px;color: black;">
+                          {{touristDestination.name}}
+                        </a>
+                        <p class="name">
+                            <span
+                                class="review-small">
+                                <span class="review-score" style="font-weight: 600;font-size: 15px; ">9.7</span>
+                                <span class="review-text" style="font-weight: 600;font-size: 15px;">Tuyệt vời</span>
+                                <span class="review-count" style="font-weight: 600; font-size: 15px;"> | 156 đánh giá</span>
+                            </span>
+                        </p>
+                        <p  style="font-weight: 500;font-size: 16px; ">{{touristDestination.title}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12  col-md-3">
+            <h4>Lưu trú</h4>
+            <p>Sự kết hợp của nét quyến rũ, vẻ hiện đại và tính chân thực.</p>
+        </div>
+        <div class="col-xs-12  col-md-9">
+            <div class="hotel-item">
+                <div class="left">
+                    <div class="img-wrapper">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4e/50/01/k-co-m-t-ngay-bi-n-d.jpg?w=400&h=-1&s=1"
+                            style="max-width: 260px; border-radius: 2%;">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="header"  style="border-radius: 2%;border: rgb(41, 194, 199);">
+                        <a routerLinkActive="router-link-active" class="name limit-length" style="font-size: 20px;color: black;">
+                            binh dinh
+                        </a>
+                        <p class="name">
+                            <span
+                                class="review-small">
+                                <span class="review-score" style="font-weight: 600;font-size: 14px; ">9.7</span>
+                                <span class="review-text" style="font-weight: 400;font-size: 14px;">Tuyệt vời</span>
+                                <span class="review-count" style="font-weight: 400; font-size: 14px;"> | 156 đánh giá</span>
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hotel-item">
+                <div class="left">
+                    <div class="img-wrapper">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4e/50/01/k-co-m-t-ngay-bi-n-d.jpg?w=400&h=-1&s=1"
+                            style="max-width: 260px;">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="header">
+                        <a routerLinkActive="router-link-active" class="name limit-length">
+                            binh dinh
+                        </a>
+                        <p class="name">
+                            <span
+                                onclick="location.href='//www.ivivu.com/khach-san-phu-quoc/jw-marriott-phu-quoc-emerald-bay-resort-spa#review'"
+                                class="review-small">
+                                <span class="review-score">9.7</span>
+                                <span class="review-text">Tuyệt vời</span>
+                                <span class="review-count"> | 156 đánh giá</span>
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hotel-item">
+                <div class="left">
+                    <div class="img-wrapper">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4e/50/01/k-co-m-t-ngay-bi-n-d.jpg?w=400&h=-1&s=1"
+                            style="max-width: 260px;">
+                    </div>
+                </div>
+                <div class="center">
+                    <div class="header">
+                        <a routerLinkActive="router-link-active" class="name limit-length">
+                            binh dinh
+                        </a>
+                        <p class="name">
+                            <span
+                                onclick="location.href='//www.ivivu.com/khach-san-phu-quoc/jw-marriott-phu-quoc-emerald-bay-resort-spa#review'"
+                                class="review-small">
+                                <span class="review-score">9.7</span>
+                                <span class="review-text">Tuyệt vời</span>
+                                <span class="review-count"> | 156 đánh giá</span>
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

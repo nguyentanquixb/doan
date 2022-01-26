@@ -1,0 +1,24 @@
+<p-toast position="top-right"></p-toast>
+<div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="comment">Nộ dung đánh giá</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="hotelAssess.comment" name="comment" />
+      </div>
+      
+      <div class="form-group">
+        <div class="card">
+          <h5>Tải ảnh lên</h5>
+          <p-fileUpload name="demo[]" (onSelect)="onUpload($event)" [multiple]="true" [showUploadButton]= 'false'  accept="image/*">
+          </p-fileUpload>
+        </div>
+      </div>
+  
+  
+      <!-- <button (click)="saveHotelAssess()" class="btn btn-success">Submit</button> -->
+      <button type="button" pButton pRipple (click)="saveHotelAssess()" label="Đánh giá" class="p-button-success"></button>
+    </div> 
+  </div>
+  <div *ngIf="submitted"><h3>Đánh giá thành công</h3></div>
+  
+  

@@ -1,0 +1,190 @@
+.hotel-header .hotel-information .title {
+    line-height: 1.25;
+    color: #003C71;
+    font-weight: bold;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.hotel-header .hotel-information .icons.stars {
+    color: #F79321;
+}
+
+.hotel-header .hotel-information .icons {
+    white-space: nowrap;
+    position: relative;
+    font-size: 17px;
+}
+
+.v-margin-right-15 {
+    margin-right: 15px;
+}
+
+.hotel-header .hotel-information .score-container .score {
+    padding: 3px 5px;
+    border-radius: 6px;
+    background: #9FC43A;
+    color: white;
+    font-weight: bold;
+}
+
+.hotel-header .hotel-information .score-container .score-description {
+    color: #9FC43A;
+    font-weight: bold;
+}
+
+.vicon {
+    line-height: 1;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.hotel-header .hotel-reservation{
+    margin-top: 17px;
+}
+.hotel-header .hotel-reservation .price {
+    line-height: 1.1;
+    font-weight: 600;
+    color: #26BED6;
+    font-size: 20px;
+}
+span.currency {
+    font-size: 14px;
+    color: #26BED6;
+    font-weight: 600;
+}
+
+.iconcircle {
+    color: #26BED6;
+    margin-right: 8px;
+    content: ' \25CF';
+    font-size: 10px;
+}
+.hotelFacilityContent{
+    color: black;
+}
+.vcolor-primary {
+    color: #003C71;
+}
+.font-size-16 {
+    font-size: 16px;
+}
+.font-bold {
+    font-weight: bold;
+}
+.hotelFacilities{
+    color: black;
+}
+.hotelDetailTitle{
+    color: #003C71;
+    font-size: 16px;
+    font-weight: bold;
+}
+.mrg-b-15 {
+    margin-bottom: 15px;
+  
+}
+.mrg{
+    margin-bottom: 45px;  
+}
+
+.customerReviewHeader span.scoreSpan {
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    background-color: #9FC43A;
+    font-size: 18px;
+}
+.customerReviewHeader span.scoreStatus {
+    font-size: 16px;
+    font-weight: bold;
+    color: #26BED6;
+}
+.customerReviewHeader span.scoreReviewQuantity {
+    font-size: 12px;
+    color: #26BED6;
+}
+.customerReview .verticalLine {
+    margin-left: 3px;
+    border-left: 1px solid #26BED6;
+    line-height: 10px;
+    padding: 1px 8px;
+}
+.vspacing10 {
+    margin: 20px 0px;
+}
+ .recentReviews {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* img */
+:host ::ng-deep .custom-galleria.p-galleria.fullscreen {
+    display: flex;
+    flex-direction: column;
+}
+:host ::ng-deep .custom-galleria.p-galleria.fullscreen .p-galleria-content {
+    flex-grow: 1;
+    justify-content: center;
+}
+:host ::ng-deep .custom-galleria.p-galleria .p-galleria-content {
+    position: relative;
+}
+:host ::ng-deep .custom-galleria.p-galleria .p-galleria-thumbnail-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+:host ::ng-deep .custom-galleria.p-galleria .p-galleria-thumbnail-items-container {
+    width: 100%;
+}
+:host ::ng-deep .custom-galleria.p-galleria .custom-galleria-footer {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
+}
+:host ::ng-deep .custom-galleria.p-galleria .custom-galleria-footer > button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 0 none;
+    border-radius: 0;
+    margin: .2rem 0;
+}
+:host ::ng-deep .custom-galleria.p-galleria .custom-galleria-footer > button.fullscreen-button {
+    margin-left: auto;
+}
+:host ::ng-deep .custom-galleria.p-galleria .custom-galleria-footer > button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+:host ::ng-deep .custom-galleria.p-galleria .title-container > span {
+    font-size: .9rem;
+    padding-left: .829rem;
+}
+:host ::ng-deep .custom-galleria.p-galleria .title-container > span.title {
+    font-weight: bold;
+}
+
+.product-item .product-item-content {
+	border: 1px solid var(--surface-d);
+	border-radius: 3px;
+	margin: .3rem;
+	text-align: center;
+	padding: 2rem 0;
+}
+.product-item {
+    height: 200px;
+}
+.product-item .product-image {
+	width: 100%;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+h4{
+    color: #003C71;
+}

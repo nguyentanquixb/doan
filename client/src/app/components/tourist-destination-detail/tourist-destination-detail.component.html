@@ -1,0 +1,143 @@
+<!-- <app-header>
+</app-header>
+<p-toast position="center"></p-toast>
+<div class="container" *ngIf="hotels">
+    <div class="row">
+        <div class="col-xs-12  col-md-3">
+
+            <div *ngIf="options">
+                <p-gmap #gmap [style]="{'width':'100%','height':'320px', 'margin-bottom': '1em'}" [options]="options"
+                    [overlays]="overlays" (onMapClick)="handleMapClick($event)"
+                    (onOverlayClick)="handleOverlayClick($event)" (onOverlayDragEnd)="handleDragEnd($event)">
+                </p-gmap>
+            </div>
+
+            <div *ngIf="hotels">
+                <h4>
+                    Trải nghiệm phải thử ở {{hotels.name}}</h4>
+                    <p>
+                        {{hotels.introduce}}</p>
+            </div>
+
+        </div>
+        <div class="col-xs-12  col-md-9">
+            <div class="col-xs-12 no-padding hotel-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 hotel-information">
+                        <h1 class="title">
+                            <span id="hotel-name-detail">{{ hotels.name }}</span>
+                            <span class="icons favourite" data-toggle="tooltip" title=""
+                                data-original-title="Khách sạn yêu thích">
+                                <i class="fa fa-heart ng-scope" id="refrrrrrrr"
+                                    ng-if="RoomsPrice!=undefined &amp;&amp; RoomsPrice.Prefered"></i>
+                            </span>
+                        </h1>
+                        <p class="address description htldtl-address hidden-xs">
+                            <i class="fa fa-map-marker"></i> {{ hotels.address }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <p-galleria #galleria [value]="images" [(activeIndex)]="activeIndex" [numVisible]="5"
+                    [containerStyle]="{'max-width':'750px'}" [containerClass]="galleriaClass()" [showThumbnails]="true"
+                    [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
+                    [transitionInterval]="3000">
+                    <ng-template pTemplate="item" let-item>
+                        <img [src]="item.previewImage"
+                            [ngStyle]="{'width': !fullscreen ? '100%' : '', 'display': !fullscreen ? 'block' : ''}" />
+                    </ng-template>
+                    <ng-template pTemplate="thumbnail" let-item>
+                        <div class="p-grid p-nogutter p-justify-center">
+                            <img [src]="item.thumbnailImage" style="max-width: 90px;" />
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="footer" let-item>
+                        <div class="custom-galleria-footer">
+                            <button type="button" pButton icon="pi pi-list" (click)="onThumbnailButtonClick()"></button>
+                            <span *ngIf="images" class="title-container">
+                                <span>{{activeIndex + 1}}/{{images.length}}</span>
+                                <span>{{images[activeIndex].alt}}</span>
+                            </span>
+                            <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
+                                class="fullscreen-button"></button>
+                        </div>
+                    </ng-template>
+                </p-galleria>
+
+            </div>
+            <article class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mrg-b-15 ">
+                <p class="hotelDetailTitle">Đánh giá khách hàng về {{ hotels.name }}</p>
+            </article>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerReviewHeader" *ngIf="hotelAssess">
+                <span class="scoreSpan" itemprop="ratingValue">9.8 /10</span>
+                <span class="scoreStatus">Tuyệt vời </span>
+                <span class="scoreReviewQuantity verticalLine"><span itemprop="reviewCount">{{hotelAssess.length
+                        }}</span> đánh giá</span>
+                <br>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vspacing10">
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <span class="recentReviews">
+                        Đánh giá gần đây
+                    </span>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <button pButton pRipple type="button" (click)="showAssess()" style="font-size: 16px;"
+                        label="Viết đánh giá" class="p-button-raised p-button-secondary" *ngIf="isLoggedIn"></button>
+                    <button pButton pRipple type="button" style="font-size: 16px;" label="Viết đánh giá"
+                        class="p-button-raised p-button-secondary" *ngIf="!isLoggedIn" (click)="showLogin()"></button>
+                </div>
+            </div>
+            <div class="nopadding col-xs-12 col-sm-12 col-md-12 col-lg-12 customerReviewDetailContainer"
+                *ngFor="let hotelAssess of hotelAssess">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 customerReviewDetail  mrg-lr-mb-0">
+                    <div class="horizontalLine"></div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vspacing3 customerReviewName"
+                                *ngIf="hotelAssess.users">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span>{{ hotelAssess.users.username }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 vspacing3">
+                                <span class="scoreSpan">10.0</span>
+                                <span class="scoreStatus">Tuyệt vời </span>
+                                <span class="scoreReviewDate">{{ hotelAssess.createdAt | date :'short' }}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 review-image-wrap review-preload">
+                                <div *ngIf=" hotelAssess.imageAssess">
+                                    <p-carousel [value]="hotelAssess.imageAssess" styleClass="custom-carousel"
+                                        [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000"
+                                        [responsiveOptions]="responsiveOptionsAssess">
+                                        <ng-template pTemplate="header">
+                                            <h5>{{hotelAssess.comment}}</h5>
+                                        </ng-template>
+                                        <ng-template let-product pTemplate="item">
+                                            <div class="product-item">
+                                                <div class="product-item-content">
+                                                    <div class="p-mb-3">
+                                                        <img src="{{ product.img }}" class="product-image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </p-carousel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ -->

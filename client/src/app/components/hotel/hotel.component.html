@@ -1,0 +1,197 @@
+<app-header></app-header>
+<div class="container">
+    <div class="hotelListHeadLine">
+        <h1 class="hotelName vspacingbottom15 hidden-xs">
+            Khách sạn Quy Nhon
+            <div class="visible-xs visible-sm">
+                <div class="vspacingbottom5"></div>
+            </div>
+            <span class="mapIcon expandMapButton hidden-xs"><a ><i
+                        class="glyphicon glyphicon-map-marker"></i> XEM BẢN ĐỒ</a></span>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12  col-md-3">
+            <div class="filter-list">
+                <div class="filter-section">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="nhap ten khach san" [(ngModel)]="name" />
+                        <div class="input-group-btn">
+                            <button class="btn" type="button" (click)="searchTitle()"><i
+                                    class="pi pi-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-menu"><span class="filter-title">Hạng sao</span></div>
+                    <div class="filter-items">
+                        <div class="filter-item ng-scope">
+                            <div *ngFor="let checkbox of checkboxstar">
+                                <input type="checkbox" [value]="checkbox.value" [name]="checkbox.name"
+                                    (change)="GetStar($event)"><Label>
+                                    <span class="stars" *ngIf="checkbox.value == 1">
+                                        <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="checkbox.value == 2">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="checkbox.value == 3">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="checkbox.value==4">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="checkbox.value==5">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> </span>
+                                </Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-menu"><span class="filter-title">Khu vực</span></div>
+                    <div *ngFor="let checkboxDistrict of checkboxDistrict">
+                        <input type="checkbox" [value]="checkboxDistrict.value" [name]="checkboxDistrict.name">
+                        <Label>
+                            <span class="stars" *ngIf="checkboxDistrict.value == 1">
+                                {{ checkboxDistrict.name }} </span>
+                            <span class="stars" *ngIf="checkboxDistrict.value == 2">
+                                {{ checkboxDistrict.name }} </span>
+                            <span class="stars" *ngIf="checkboxDistrict.value == 3">
+                                {{ checkboxDistrict.name }} </span>
+                        </Label>
+                    </div>
+                </div>
+                <input type="hidden" ng-init="dataTags=[]">
+                <div class="filter-section">
+                    <div class="filter-menu"><span class="filter-title">Loại hình nơi ở</span></div>
+                    <div class="filter-items" ng-init="limitItemHotelClass=6;  maxLenHotelClass = 12">
+                        <div class="filter-item ng-scope">
+                            <div *ngFor="let TypeofAccommodation of TypeofAccommodation">
+                                <input type="checkbox" [value]="TypeofAccommodation.value"
+                                    [name]="TypeofAccommodation.name">
+                                <Label>
+                                    <span class="stars" *ngIf="TypeofAccommodation.value == 'Resort' ">
+                                        {{ TypeofAccommodation.name }} </span>
+                                    <span class="stars" *ngIf="TypeofAccommodation.value == 'Villa'">
+                                        {{ TypeofAccommodation.name }} </span>
+                                    <span class="stars" *ngIf="TypeofAccommodation.value == 'Hotel'">
+                                        {{ TypeofAccommodation.name }} </span>
+                                    <span class="stars" *ngIf="TypeofAccommodation.value == 'Apartment'">
+                                        {{ TypeofAccommodation.name }} </span>
+                                </Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-menu"><span class="filter-title">Tiện ích</span></div>
+                    <div class="filter-items">
+                        <div class="filter-item ng-scope">
+                            <div *ngFor="let Utilities of Utilities">
+                                <input type="checkbox" [value]="Utilities.value" [name]="Utilities.name">
+                                <Label>
+                                    <span class="stars" *ngIf="Utilities.value == 'Phòng gia đình' ">
+                                        {{ Utilities.name }} </span>
+                                    <span class="stars" *ngIf="Utilities.value == 'Bãi biển riêng'">
+                                        {{ Utilities.name }} </span>
+                                    <span class="stars" *ngIf="Utilities.value == 'Bãi đậu xe ô tô tại khách sạn'">
+                                        {{ Utilities.name }} </span>
+                                    <span class="stars" *ngIf="Utilities.value == 'Hồ bơi'">
+                                        {{ Utilities.name }} </span>
+                                </Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12  col-md-9">
+            <div class="hotel-item__wrapper combo" *ngFor="let hotel of hotels; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveHotel(hotel, i)">
+                <div *ngIf="hotel.published == 1">
+                    <div class="hotel-item">
+                        <div class="left">
+                            <div class="img-wrapper">
+                                <img src="{{hotel.img}}" style="width: 300px;">
+                            </div>
+                        </div>
+                        <div class="center">
+                            <div class="header">
+                                <a [routerLink]="['/hotel-details',hotel.id]" routerLinkActive="router-link-active"
+                                    class="name limit-length">
+                                    {{ hotel.name }}
+                                </a>
+                                <p class="name">
+                                    <span class="stars" *ngIf="hotel.star == 1">
+                                        <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="hotel.star == 2">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="hotel.star == 3">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="hotel.star == 4">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> <i class="fa fa-star star"></i> </span>
+                                    <span class="stars" *ngIf="hotel.star == 5">
+                                        <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i
+                                            class="fa fa-star star"></i> </span>
+                                    <i class="fa fa-heart heart"></i>
+                                    <span
+                                        onclick="location.href='//www.ivivu.com/khach-san-phu-quoc/jw-marriott-phu-quoc-emerald-bay-resort-spa#review'"
+                                        class="review-small">
+                                        <span class="review-score">9.7</span>
+                                        <span class="review-text">Tuyệt vời</span>
+                                        <span class="review-count"> | {{hotel.hotelAssessment.length}} đánh giá</span>
+                                    </span>
+                                </p>
+                                <p class="address limit-length"
+                                    onclick="window.open('/khach-san-phu-quoc/ban-do#JW Marriott Phu Quoc Emerald Bay Resort &amp; Spa');">
+                                    <i class="fa fa-map-marker"></i> {{hotel.address}} - <b>Xem bản đồ</b>
+                                </p>
+                            </div>
+                            <div class="highlights">
+                                <div class="hightlight hidden-xs">
+                                    <div class="super-tag">
+                                        <i class="fa fa-check"></i> Bãi biển riêng
+                                    </div>
+                                    <div class="super-tag">
+                                        <i class="fa fa-check"></i> Chụp ảnh đẹp
+                                    </div>
+                                    <div class="super-tag">
+                                        <i class="fa fa-check"></i> Thương hiệu quốc tế
+                                    </div>
+                                </div>
+                                <div class="hightlight">
+                                    <div class="pill-container pill-primary">
+                                        <div class="pill-title">
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="pill-item" *ngFor="let item of hotel.hotelamenities">
+                                            {{ item.amenities }}
+                                        </div>
+                                        <div class="pill-item pill-plus" data-toggle="tooltip" data-placement="bottom"
+                                            data-delay="{&quot;show&quot;:100, &quot;hide&quot;:50}" title=""
+                                            data-original-title="Thiết kế độc đáo, Bãi biển riêng cát trắng, Đẳng cấp quốc tế, Miễn phí đón tiễn sân bay">
+                                            <b>2+</b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="pricing">
+                                <div class="pricing__group">
+                                    <p class="price primary">
+                                        <span>{{ hotel.price | currency:'VND':false }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
